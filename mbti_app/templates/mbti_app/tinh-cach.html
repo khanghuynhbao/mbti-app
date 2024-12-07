@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ personality.key }} - {{ personality.name }}
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <!-- Tiêu đề với dropdown -->
+  <div class="dropdown mb-4">
+    <button class="btn btn-link dropdown-toggle w-100 text-decoration-none" type="button" data-bs-toggle="dropdown">
+      <h1 class="h3 fw-bold text-center m-0">{{ personality.key }} - {{ personality.name }}</h1>
+    </button>
+    <div class="dropdown-menu w-100 p-2">
+      <div class="row row-cols-2 row-cols-md-4 g-2">
+        {% for mbti in all_personalities %}
+          {% if mbti.key != personality.key %}
+            <div class="col">
+              <a class="btn btn-outline-primary w-100" href="{% url 'tinh_cach' mbti.key %}">
+                <small class="fw-bold d-block">{{ mbti.key }}</small>
+                <span class="small">{{ mbti.name }}</span>
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Nội dung -->
+  <div class="row g-4">
+    <!-- Menu bên trái -->
+    <div class="col-md-3">
+      <div class="list-group shadow-sm" style="position: fixed; width: 20%;">
+        <button class="list-group-item list-group-item-action active" data-bs-toggle="pill" data-bs-target="#v-pills-overview">
+          <i class="fas fa-book-open me-2"></i>Tổng quan
+        </button>
+        <button class="list-group-item list-group-item-action" data-bs-toggle="pill" data-bs-target="#v-pills-strengths-weaknesses">
+          <i class="fas fa-balance-scale me-2"></i>Điểm mạnh & yếu
+        </button>
+        <button class="list-group-item list-group-item-action" data-bs-toggle="pill" data-bs-target="#v-pills-relationships">
+          <i class="fas fa-heart me-2"></i>Mối quan hệ
+        </button>
+        <button class="list-group-item list-group-item-action" data-bs-toggle="pill" data-bs-target="#v-pills-careers">
+          <i class="fas fa-briefcase me-2"></i>Con đường sự nghiệp
+        </button>
+        <button class="list-group-item list-group-item-action" data-bs-toggle="pill" data-bs-target="#v-pills-careers">
+          <i class="fas fa-briefcase me-2"></i>Thói quen nơi làm việc
+        </button>
+        <button class="list-group-item list-group-item-action" data-bs-toggle="pill" data-bs-target="#v-pills-conclusion">
+          <i class="fas fa-lightbulb me-2"></i>Lời khuyên dành cho {{ personality.key}}
+        </button>
+      </div>
+    </div>
+
+    <!-- Nội dung bên phải -->
+    <div class="col-md-9 offset-md-3">
+      <div class="tab-content bg-white shadow-sm rounded p-3" id="v-pills-tabContent">
+        <!-- Tổng quan -->
+        <div class="tab-pane fade show active" id="v-pills-overview" role="tabpanel">
+          <h3 class="mb-4 fw-bold text-primary">Tổng quan về {{ personality.name }}</h3>
+          <p class="lead mb-4">{{ personality.description }}</p>
+          
+          <!-- Chi tiết các chiều tính cách -->
+          <div class="mt-4">
+            <h4 class="mb-3">{{ personality.key }} là viết tắt của những chữ cái gì:</h4>
+            <div class="row g-3">
+              {% for dim, detail in personality.dimension_details.items %}
+                <div class="col-md-6">
+                  <div class="card h-100">
+                    <div class="card-body d-flex align-items-center">
+                      <span class="h1 fw-bold mb-0 me-2">{{ detail.code }}</span>
+                      <span class="text-muted"> - {{ detail.detail }}</span>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Điểm mạnh và điểm yếu -->
+        <div class="tab-pane fade" id="v-pills-strengths-weaknesses" role="tabpanel">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <h3 class="mb-4 fw-bold text-success">Điểm mạnh</h3>
+              <ul class="list-group list-group-flush">
+                {% for strength in personality.strengths_weaknesses.strengths %}
+                  <li class="list-group-item">
+                    <i class="fas fa-plus-circle text-success me-2"></i>
+                    <strong>{{ strength.title }}</strong>
+                    <p class="mb-0">{{ strength.description }}</p>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h3 class="mb-4 fw-bold text-danger">Điểm yếu</h3>
+              <ul class="list-group list-group-flush">
+                {% for weakness in personality.strengths_weaknesses.weaknesses %}
+                  <li class="list-group-item">
+                    <i class="fas fa-minus-circle text-danger me-2"></i>
+                    <strong>{{ weakness.title }}</strong>
+                    <p class="mb-0">{{ weakness.description }}</p>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mối quan hệ -->
+        <div class="tab-pane fade" id="v-pills-relationships" role="tabpanel">
+          <h3 class="mb-4 fw-bold text-primary">Mối quan hệ</h3>
+          <div class="card mb-4">
+            <div class="card-body">
+              <h4 class="card-title" style="font-size: 1.5rem;">Tình bạn</h4>
+              <p class="card-text" style="font-size: 1.2rem;">{{ personality.relationships.friendship.description }}</p>
+              <ul style="font-size: 1.2rem;">
+                {% for point in personality.relationships.friendship.key_points %}
+                  <li>{{ point }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-body">
+              <h4 class="card-title" style="font-size: 1.5rem;">Tình yêu</h4>
+              <p class="card-text" style="font-size: 1.2rem;">{{ personality.relationships.love.description }}</p>
+              <ul style="font-size: 1.2rem;">
+                {% for point in personality.relationships.love.key_points %}
+                  <li>{{ point }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          <div class="card mb-4">
+            <div class="card-body">
+              <h4 class="card-title" style="font-size: 1.5rem;">Làm cha mẹ</h4>
+              <p class="card-text" style="font-size: 1.2rem;">{{ personality.relationships.parenthood.description }}</p>
+              <ul style="font-size: 1.2rem;">
+                {% for point in personality.relationships.parenthood.key_points %}
+                  <li>{{ point }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Con đường sự nghiệp -->
+        <div class="tab-pane fade" id="v-pills-careers" role="tabpanel">
+          <h3 class="mb-4 fw-bold text-primary">Con đường sự nghiệp</h3>
+          <div>
+            {% for session in personality.career_path.session %}
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5 class="card-title">{{ session.title }}</h5>
+                  <p class="card-text">{{ session.description }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Lời khuyên -->
+        <div class="tab-pane fade" id="v-pills-advice" role="tabpanel">
+          <h3 class="mb-4 fw-bold text-primary">Lời khuyên phát triển</h3>
+          <div class="card">
+            <div class="card-body">
+              <ul class="list-unstyled">
+                {% for advice in personality.advice %}
+                  <li class="mb-3">
+                    <i class="fas fa-lightbulb text-warning me-2"></i>{{ advice }}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

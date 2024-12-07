@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bài kiểm tra tính cách MBTI{% endblock %}
+
+{% block content %}
+
+<!-- Progress bar cố định ở trên cùng -->
+<div class="progress-container">
+  <div class="container">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: 0%" 
+           aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+      </div>
+    </div>
+    <div class="progress-info text-center">
+      <span id="answered-count">0</span>/<span id="total-questions">70</span> câu hỏi
+    </div>
+  </div>
+</div>
+
+<div class="container main-content" style="margin-top: 80px;">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <h1 class="text-center mb-4">Bài kiểm tra MBTI</h1>
+          
+          <form method="POST">  <!-- Bỏ action để form submit về chính trang hiện tại -->
+            {% csrf_token %}
+            <div class="questions">
+              {% for question in questions %}
+              <div id="question-{{forloop.counter}}" class="question-box bg-light rounded p-4 mb-4 shadow-sm">
+                <p class="question mb-3 fw-500 text-dark fs-5">{{forloop.counter}}. {{question.question}}</p>
+                <div class="options">
+                  <div class="row w-100 mx-0">
+                    <div class="col-6 px-2">
+                      <div class="form-check">
+                        <input type="radio" class="form-check-input question-option" 
+                               name="q{{question.id}}" 
+                               id="q{{question.id}}_0" 
+                               value="0" 
+                               data-question="{{forloop.counter}}"
+                               required>
+                        <label class="form-check-label" for="q{{question.id}}_0">
+                          {{question.options.0}}
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-6 px-2">
+                      <div class="form-check">
+                        <input type="radio" class="form-check-input question-option"
+                               name="q{{question.id}}" 
+                               id="q{{question.id}}_1" 
+                               value="1"
+                               data-question="{{forloop.counter}}"
+                               required>
+                        <label class="form-check-label" for="q{{question.id}}_1">
+                          {{question.options.1}}
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+
+            <div class="text-center mt-4">
+              <button type="submit" class="btn btn-primary btn-lg px-5">Xem kết quả</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const options = document.querySelectorAll('.question-option');
+  const progressBar = document.querySelector('.progress-bar');
+  const answeredCount = document.getElementById('answered-count');
+  const totalQuestions = document.getElementById('total-questions');
+  
+  let answered = 0;
+  const total = options.length / 2; // Chia 2 vì mỗi câu có 2 options
+  
+  // Cập nhật progress bar
+  function updateProgress() {
+    const progress = (answered / total) * 100;
+    progressBar.style.width = progress + '%';
+    progressBar.setAttribute('aria-valuenow', progress);
+    answeredCount.textContent = answered;
+  }
+  
+  // Khởi tạo số câu hỏi
+  totalQuestions.textContent = total;
+  
+  // Kiểm tra các câu đã trả lời
+  function checkAnswered() {
+    answered = document.querySelectorAll('input[type="radio"]:checked').length;
+    updateProgress();
+  }
+  
+  // Lắng nghe sự kiện change của radio buttons
+  options.forEach(option => {
+    option.addEventListener('change', function() {
+      checkAnswered();
+      
+      const currentQuestion = parseInt(this.dataset.question);
+      const nextQuestion = document.getElementById(`question-${currentQuestion + 1}`);
+      
+      if (nextQuestion) {
+        setTimeout(() => {
+          nextQuestion.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'center'
+          });
+        }, 300);
+      }
+    });
+  });
+
+  // Kiểm tra ban đầu nếu có câu đã được trả lời
+  checkAnswered();
+  
+  // Thêm hiệu ứng khi chọn đáp án
+  document.querySelectorAll('.form-check').forEach(check => {
+    const radio = check.querySelector('input[type="radio"]');
+    radio.addEventListener('change', () => {
+      // Xóa selected khỏi tất cả options trong cùng câu hỏi
+      const questionBox = check.closest('.question-box');
+      questionBox.querySelectorAll('.form-check').forEach(c => c.classList.remove('selected'));
+      // Thêm selected vào option được chọn
+      if (radio.checked) {
+        check.classList.add('selected');
+      }
+    });
+  });
+
+  // Cải thiện khả năng click
+  document.querySelectorAll('.form-check').forEach(check => {
+    check.addEventListener('click', (e) => {
+      const radio = check.querySelector('input[type="radio"]');
+      radio.checked = true;
+      radio.dispatchEvent(new Event('change'));
+      
+      // Xóa selected khỏi tất cả options trong cùng câu hỏi
+      const questionBox = check.closest('.question-box');
+      questionBox.querySelectorAll('.form-check').forEach(c => c.classList.remove('selected'));
+      
+      // Thêm selected vào option được chọn
+      check.classList.add('selected');
+    });
+  });
+});
+</script>
+
+{% endblock %}

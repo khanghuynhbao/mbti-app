@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Các loại tính cách{% endblock %}
+
+{% block content %}
+<section class="personalities-section py-5">
+  <div class="container">
+    <!-- Header -->
+    <header class="text-center mb-5">
+      <h1 class="display-4 fw-bold">16 Loại Tính Cách MBTI</h1>
+      <p class="lead text-muted">Khám phá các tính cách khác nhau</p>
+    </header>
+
+    <!-- Personality Cards -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      {% for personality in types.values %}
+        <div class="col">
+          <a href="{% url 'tinh_cach' personality.key|lower %}" class="text-decoration-none card-link">
+            <article class="card h-100 personality-card border-0 shadow-sm hover-lift">
+              <div class="card-body p-4">
+                <div class="personality-code mb-3">
+                  <span class="badge rounded-pill bg-primary-subtle text-primary px-3 py-2 fs-6">
+                    {{ personality.key }}
+                  </span>
+                </div>
+                <h3 class="card-title h5 fw-bold text-dark">{{ personality.name }}</h3>
+                <p class="card-text small text-muted">{{ personality.description }}</p>
+              </div>
+            </article>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,240 @@
+<!-- Sửa lại cấu trúc để hiển thị tất cả biểu đồ -->
+<div class="field-charts">
+    <div class="field-chart" id="education-chart" style="display: none; width: 100%;">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center bg-light">
+                <h5 class="mb-0">
+                    <i class="fas fa-graduation-cap me-2"></i>Giáo dục
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <canvas id="educationChart"></canvas>
+                    </div>
+                    <div class="col-lg-4">
+                        <h6 class="mb-3">Thông tin chi tiết:</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Tính cách phù hợp nhất: ENFJ, INFJ
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-star text-warning me-2"></i>
+                                Điểm trung bình: 21.5
+                            </li>
+                            <li>
+                                <i class="fas fa-info-circle text-info me-2"></i>
+                                15 ngành học
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="field-chart" id="engineering-chart" style="display: none; width: 100%;">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center bg-light">
+                <h5 class="mb-0">
+                    <i class="fas fa-cogs me-2"></i>Kỹ thuật & Công nghệ
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <canvas id="engineeringChart"></canvas>
+                    </div>
+                    <div class="col-lg-4">
+                        <h6 class="mb-3">Thông tin chi tiết:</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Tính cách phù hợp nhất: INTJ, INTP, ISTP
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-star text-warning me-2"></i>
+                                Điểm trung bình: 24.2
+                            </li>
+                            <li>
+                                <i class="fas fa-info-circle text-info me-2"></i>
+                                24 ngành học
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field-chart" id="it-chart" style="display: none; width: 100%;">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center bg-light">
+                <h5 class="mb-0">
+                    <i class="fas fa-laptop-code me-2"></i>Công nghệ thông tin
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <canvas id="itChart"></canvas>
+                    </div>
+                    <div class="col-lg-4">
+                        <h6 class="mb-3">Thông tin chi tiết:</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Tính cách phù hợp nhất: INTJ, INTP
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-star text-warning me-2"></i>
+                                Điểm trung bình: 23.8
+                            </li>
+                            <li>
+                                <i class="fas fa-info-circle text-info me-2"></i>
+                                13 ngành học
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field-chart" id="business-chart" style="display: none; width: 100%;">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center bg-light">
+                <h5 class="mb-0">
+                    <i class="fas fa-briefcase me-2"></i>Kinh doanh
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <canvas id="businessChart"></canvas>
+                    </div>
+                    <div class="col-lg-4">
+                        <h6 class="mb-3">Thông tin chi tiết:</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Tính cách phù hợp nhất: ENTJ, ESTJ
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-star text-warning me-2"></i>
+                                Điểm trung bình: 22.5
+                            </li>
+                            <li>
+                                <i class="fas fa-info-circle text-info me-2"></i>
+                                12 ngành học
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field-chart" id="agriculture-chart" style="display: none; width: 100%;">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center bg-light">
+                <h5 class="mb-0">
+                    <i class="fas fa-leaf me-2"></i>Nông nghiệp
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <canvas id="agricultureChart"></canvas>
+                    </div>
+                    <div class="col-lg-4">
+                        <h6 class="mb-3">Thông tin chi tiết:</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Tính cách phù hợp nhất: ISTJ, ESTJ
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-star text-warning me-2"></i>
+                                Điểm trung bình: 20.8
+                            </li>
+                            <li>
+                                <i class="fas fa-info-circle text-info me-2"></i>
+                                8 ngành học
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field-chart" id="science-chart" style="display: none; width: 100%;">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center bg-light">
+                <h5 class="mb-0">
+                    <i class="fas fa-flask me-2"></i>Khoa học
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <canvas id="scienceChart"></canvas>
+                    </div>
+                    <div class="col-lg-4">
+                        <h6 class="mb-3">Thông tin chi tiết:</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Tính cách phù hợp nhất: INTJ, INTP
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-star text-warning me-2"></i>
+                                Điểm trung bình: 23.5
+                            </li>
+                            <li>
+                                <i class="fas fa-info-circle text-info me-2"></i>
+                                6 ngành học
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field-chart" id="humanities-chart" style="display: none; width: 100%;">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center bg-light">
+                <h5 class="mb-0">
+                    <i class="fas fa-book me-2"></i>Nhân văn
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <canvas id="humanitiesChart"></canvas>
+                    </div>
+                    <div class="col-lg-4">
+                        <h6 class="mb-3">Thông tin chi tiết:</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Tính cách phù hợp nhất: INFJ, INFP
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-star text-warning me-2"></i>
+                                Điểm trung bình: 21.0
+                            </li>
+                            <li>
+                                <i class="fas fa-info-circle text-info me-2"></i>
+                                4 ngành học
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

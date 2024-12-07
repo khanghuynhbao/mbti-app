@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Trắc nghiệm tính cách MBTI{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Introduction -->
+    <header class="mb-5 text-center">
+        <h1 class="display-4 mb-3">Trắc nghiệm tính cách MBTI</h1>
+        <div class="lead text-muted">
+            <p>Trắc nghiệm tính cách MBTI (Myers-Briggs Type Indicator) là một phương pháp sử dụng hàng loạt các câu hỏi trắc nghiệm để phân tích tính cách con người.</p>
+            <p>Kết quả trắc nghiệm MBTI chỉ ra cách con người nhận thức thế giới xung quanh và ra quyết định cho mọi vấn đề trong cuộc sống.</p>
+        </div>
+    </header>
+
+    <!-- Guidelines -->
+    <section class="mb-5">
+        <h2 class="h4 mb-3">Hướng dẫn làm trắc nghiệm MBTI để có kết quả chính xác nhất</h2>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h3 class="h5">Giữ tâm trạng ổn định</h3>
+                <p>Kết quả của một trắc nghiệm tâm lý phụ thuộc rất nhiều vào tâm trạng của bạn, vậy nên hãy thực hiện nó trong một trạng thái tâm lý bình ổn nhất.</p>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h3 class="h5">Trung thực khi trả lời câu hỏi</h3>
+                <p>Hãy phân biệt giữa thực tế (điều thực sự mô tả bạn) với lý tưởng (điều bạn muốn trở thành trong mắt người khác). Kết quả của bài trắc nghiệm hoàn toàn là câu chuyện của cá nhân bạn, đừng để yếu tố bên ngoài tác động đến câu trả lời.</p>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h3 class="h5">Kiểm tra lại định kỳ</h3>
+                <p>Chúng ta trưởng thành và thay đổi từng ngày, vậy nên kết quả MBTI cũng có thể thay đổi dựa trên nhận thức và thế giới quan tại những giai đoạn khác nhau trong cuộc đời. Tốt nhất bạn hãy làm kiểm tra MBTI lại nhiều lần để có cái nhìn tổng quát và chính xác nhất.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs -->
+    <section>
+        <h2 class="h4 mb-3">FAQs</h2>
+        <div class="accordion" id="faqAccordion">
+            <div class="card">
+                <div class="card-header" id="faqHeading1">
+                    <h3 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1">
+                            Trắc nghiệm MBTI là gì?
+                        </button>
+                    </h3>
+                </div>
+                <div id="faqCollapse1" class="collapse show" aria-labelledby="faqHeading1" data-parent="#faqAccordion">
+                    <div class="card-body">
+                        Trắc nghiệm tính cách MBTI (Myers-Briggs Type Indicator) là một phương pháp sử dụng hàng loạt các câu hỏi trắc nghiệm để phân tích tính cách con người. Kết quả trắc nghiệm MBTI chỉ ra cách con người nhận thức thế giới xung quanh và ra quyết định cho mọi vấn đề trong cuộc sống.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+<div class="tab-pane fade" id="field" role="tabpanel">
+    <div class="row">
+        <!-- Statistics Summary -->
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="py-3">Nhóm ngành</th>
+                                    <th class="text-center py-3">Số ngành</th>
+                                    <th class="text-center py-3">Số tính cách phù hợp</th>
+                                    <th class="text-center py-3">Điểm chuẩn TB</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="field-row" data-field="education">
+                                    <td><i class="fas fa-graduation-cap me-2"></i>Giáo dục</td>
+                                    <td class="text-center">15</td>
+                                    <td class="text-center">8</td>
+                                    <td class="text-center">21.5</td>
+                                </tr>
+                                <tr class="field-row" data-field="engineering">
+                                    <td><i class="fas fa-cogs me-2"></i>Kỹ thuật & Công nghệ</td>
+                                    <td class="text-center">24</td>
+                                    <td class="text-center">10</td>
+                                    <td class="text-center">24.2</td>
+                                </tr>
+                                <tr class="field-row" data-field="it">
+                                    <td><i class="fas fa-laptop-code me-2"></i>Công nghệ thông tin</td>
+                                    <td class="text-center">13</td>
+                                    <td class="text-center">6</td>
+                                    <td class="text-center">23.8</td>
+                                </tr>
+                                <tr class="field-row" data-field="business">
+                                    <td><i class="fas fa-briefcase me-2"></i>Kinh doanh</td>
+                                    <td class="text-center">12</td>
+                                    <td class="text-center">7</td>
+                                    <td class="text-center">22.5</td>
+                                </tr>
+                                <tr class="field-row" data-field="agriculture">
+                                    <td><i class="fas fa-leaf me-2"></i>Nông nghiệp</td>
+                                    <td class="text-center">8</td>
+                                    <td class="text-center">4</td>
+                                    <td class="text-center">20.8</td>
+                                </tr>
+                                <tr class="field-row" data-field="science">
+                                    <td><i class="fas fa-flask me-2"></i>Khoa học</td>
+                                    <td class="text-center">6</td>
+                                    <td class="text-center">4</td>
+                                    <td class="text-center">23.5</td>
+                                </tr>
+                                <tr class="field-row" data-field="humanities">
+                                    <td><i class="fas fa-book me-2"></i>Nhân văn</td>
+                                    <td class="text-center">4</td>
+                                    <td class="text-center">4</td>
+                                    <td class="text-center">21.0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="col-12">
+            {% include 'components/field_charts.html' %}
+        </div>
+    </div>
+</div>

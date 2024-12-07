@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Kết quả MBTI của bạn{% endblock %}
+
+{% block content %}
+<div class="container">
+  <!-- Add these hidden spans -->
+  <span id="ei_score" style="display: none;">{{ ei_score }}</span>
+  <span id="sn_score" style="display: none;">{{ sn_score }}</span>
+  <span id="tf_score" style="display: none;">{{ tf_score }}</span>
+  <span id="jp_score" style="display: none;">{{ jp_score }}</span>
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-md-5">
+          {% if personality_type %}
+            <!-- Phần hiển thị kết quả chính -->
+            <div class="text-center mb-5">
+              <h1 class="display-4 mb-3">{{ personality_type }}</h1>
+              <h2 class="h4 text-muted">{{ personality_name }}</h2>
+            </div>
+
+            <div class="row justify-content-center mb-5">
+              <div class="col-md-6 col-lg-3 mb-4">
+                <div class="chart-wrap text-center">
+                  <canvas id="eiChart" style="max-width: 200px; margin: auto;"></canvas>
+                  <p class="mt-2">Hướng ngoại (E) - Hướng nội (I)</p>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-4">
+                <div class="chart-wrap text-center">
+                  <canvas id="snChart" style="max-width: 200px; margin: auto;"></canvas>
+                  <p class="mt-2">Giác quan (S) - Trực giác (N)</p>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-4">
+                <div class="chart-wrap text-center">
+                  <canvas id="tfChart" style="max-width: 200px; margin: auto;"></canvas>
+                  <p class="mt-2">Lý trí (T) - Cảm xúc (F)</p>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3 mb-4">
+                <div class="chart-wrap text-center">
+                  <canvas id="jpChart" style="max-width: 200px; margin: auto;"></canvas>
+                  <p class="mt-2">Nguyên tắc (J) - Linh hoạt (P)</p>
+                </div>
+              </div>
+            </div>    
+
+            <!-- Tổng quan -->
+            <div class="mb-5">
+              <h3 class="mb-4 fw-bold text-primary">Tổng quan về {{ personality.name }}</h3>
+              <p class="lead mb-4">{{ description }}</p>
+              
+              <!-- Chi tiết các chiều tính cách -->
+              <div class="mt-4">
+                <h4 class="mb-3">{{ personality.key }} là viết tắt của những chữ cái gì:</h4>
+                <div class="row g-3">
+                  {% for dim, detail in personality.dimension_details.items %}
+                    <div class="col-md-6">
+                      <div class="card h-100">
+                        <div class="card-body d-flex align-items-center">
+                          <span class="h1 fw-bold mb-0 me-2">{{ detail.code }}</span>
+                          <span class="text-muted"> - {{ detail.detail }}</span>
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+    
+            <!-- Điểm mạnh và điểm yếu -->
+            <div class="mb-5">
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <h3 class="mb-4 fw-bold text-success">Điểm mạnh</h3>
+                  <ul class="list-group list-group-flush">
+                    {% for strength in personality.strengths_weaknesses.strengths %}
+                      <li class="list-group-item">
+                        <i class="fas fa-plus-circle text-success me-2"></i>
+                        <strong>{{ strength.title }}</strong>
+                        <p class="mb-0">{{ strength.description }}</p>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <h3 class="mb-4 fw-bold text-danger">Điểm yếu</h3>
+                  <ul class="list-group list-group-flush">
+                    {% for weakness in personality.strengths_weaknesses.weaknesses %}
+                      <li class="list-group-item">
+                        <i class="fas fa-minus-circle text-danger me-2"></i>
+                        <strong>{{ weakness.title }}</strong>
+                        <p class="mb-0">{{ weakness.description }}</p>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Mối quan hệ -->
+            <div class="mb-5">
+              <h3 class="mb-4 fw-bold text-primary">Mối quan hệ</h3>
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h4 class="card-title" style="font-size: 1.5rem;">Tình bạn</h4>
+                  <p class="card-text" style="font-size: 1.2rem;">{{ personality.relationships.friendship.description }}</p>
+                  <ul style="font-size: 1.2rem;">
+                    {% for point in personality.relationships.friendship.key_points %}
+                      <li>{{ point }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h4 class="card-title" style="font-size: 1.5rem;">Tình yêu</h4>
+                  <p class="card-text" style="font-size: 1.2rem;">{{ personality.relationships.love.description }}</p>
+                  <ul style="font-size: 1.2rem;">
+                    {% for point in personality.relationships.love.key_points %}
+                      <li>{{ point }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h4 class="card-title" style="font-size: 1.5rem;">Làm cha mẹ</h4>
+                  <p class="card-text" style="font-size: 1.2rem;">{{ personality.relationships.parenthood.description }}</p>
+                  <ul style="font-size: 1.2rem;">
+                    {% for point in personality.relationships.parenthood.key_points %}
+                      <li>{{ point }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Con đường sự nghiệp -->
+            <div class="mb-5">
+              <h3 class="mb-4 fw-bold text-primary">Con đường sự nghiệp</h3>
+              <div>
+                {% for session in personality.career_path.session %}
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ session.title }}</h5>
+                      <p class="card-text">{{ session.description }}</p>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+    
+            <!-- Lời khuyên -->
+            <div class="mb-5">
+              <h3 class="mb-4 fw-bold text-primary">Lời khuyên phát triển</h3>
+              <div class="card">
+                <div class="card-body">
+                  <ul class="list-unstyled">
+                    {% for advice in personality.advice %}
+                      <li class="mb-3">
+                        <i class="fas fa-lightbulb text-warning me-2"></i>{{ advice }}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nút chia sẻ -->
+            <div class="text-center">
+              <button class="btn btn-primary me-2" onclick="shareOnFacebook()">
+                <i class="fab fa-facebook-f me-2"></i>Chia sẻ
+              </button>
+              <button class="btn btn-outline-primary" onclick="copyLink()">
+                <i class="fas fa-link me-2"></i>Sao chép link
+              </button>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/ket-qua.js' %}"></script>
+<!-- Remove the script block with scores since we're using hidden spans now -->
+{% endblock %}

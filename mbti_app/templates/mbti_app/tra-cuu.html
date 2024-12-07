@@ -1,0 +1,327 @@
+{% extends 'base.html' %}
+
+{% block title %}Hướng nghiệp MBTI{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h1 class="mb-4 text-center">Tra cứu ngành học phù hợp</h1>
+  
+  <!-- Search box -->
+  <div class="search-box mb-4">
+    <div class="input-group">
+      <span class="input-group-text bg-primary text-white">
+        <i class="fas fa-search"></i>
+      </span>
+      <input type="text" class="form-control form-control-lg" id="searchInput" 
+             placeholder="Tìm kiếm theo tên ngành, mã ngành">
+    </div>
+  </div>
+
+  <!-- Filter toolbar -->
+  <div class="filter-toolbar mb-4">
+    <div class="row g-3">
+
+      <div class="col-md-3">
+        <select class="form-select" id="personalityFilter">
+          <option value="">Tất cả tính cách</option>
+          {% for key, value in PERSONALITY_TYPES.items %}
+            <option value="{{ key }}">{{ key }} - {{ value.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-3">
+        <select class="form-select" id="fieldFilter">
+          <option value="">Tất cả lĩnh vực</option>
+          {% for field, careers in careers_by_field.items %}
+            <option value="{{ field }}">
+              {% if field == 'education' %}Giáo dục
+              {% elif field == 'engineering_and_technology' %}Kỹ thuật và Công nghệ
+              {% elif field == 'computing_and_communication' %}Máy tính và Truyền thông
+              {% elif field == 'business_and_law' %}Kinh doanh và Luật
+              {% elif field == 'agriculture_and_environment' %}Nông nghiệp và Môi trường
+              {% elif field == 'natural_sciences' %}Khoa học Tự nhiên
+              {% elif field == 'humanities_and_tourism' %}Nhân văn và Du lịch
+              {% endif %}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-3">
+        <div class="input-group">
+          <span class="input-group-text">Điểm của bạn</span>
+          <input type="number" class="form-control" id="scoreFilter" min="0" max="30" step="0.01" placeholder="Nhập điểm">
+          <select class="form-select" id="scoreTypeFilter" style="max-width: 120px;">
+            <option value="hoc_ba">Học bạ</option>
+            <option value="thi_thpt">THPT</option>
+          </select>
+        </div>
+        <small class="text-muted mt-1 d-block">Nhập điểm để lọc ngành phù hợp</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Career cards grid -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for career in careers %}
+    <div class="col career-item" data-personality="{{ career.personality_types|join:' ' }}" 
+         data-field="{{ career.field }}">
+      <div class="card h-100 hover-shadow">
+        <!-- Card header -->
+        <div class="card-header bg-light">
+          <div class="d-flex justify-content-between align-items-start">
+            <h5 class="card-title mb-0 fw-bold text-primary">{{ career.title }}</h5>
+            {% if career.university_info.code %}
+            <span class="badge bg-secondary">{{ career.university_info.code }}</span>
+            {% endif %}
+          </div>
+        </div>
+        
+        <!-- Card body -->
+        <div class="card-body">
+          <p class="card-text text-muted small">{{ career.description }}</p>
+          
+          <!-- Personality types -->
+          <div class="mb-3">
+            <h6 class="fw-bold text-primary">
+              <i class="fas fa-user-circle me-2"></i>Tính cách phù hợp
+            </h6>
+            <div class="personality-badges">
+              {% for type in career.personality_types %}
+                <a href="{% url 'tinh_cach' mbti_type=type %}" 
+                   class="badge bg-primary text-decoration-none me-1">{{ type }}</a>
+              {% endfor %}
+            </div>
+          </div>
+
+          <!-- Required skills -->
+          <div class="mb-3">
+            <h6 class="fw-bold text-success">
+              <i class="fas fa-tools me-2"></i>Kỹ năng cần thiết
+            </h6>
+            <div class="skill-badges">
+              {% for skill in career.required_skills %}
+                <span class="badge bg-success me-1">{{ skill }}</span>
+              {% endfor %}
+            </div>
+          </div>
+
+          <!-- Subject groups info -->
+          <div class="mb-3">
+            <h6 class="fw-bold text-warning">
+              <i class="fas fa-layer-group me-2"></i>Khối xét tuyển
+            </h6>
+            <div class="row">
+              <div class="col-md-6">
+                <p class="mb-1"><i class="fas fa-book text-success me-1"></i>Học bạ:</p>
+                <div class="subject-badges">
+                  {% for group in career.university_info.subject_groups.hoc_ba %}
+                    <span class="badge bg-light text-dark border me-1">{{ group }}</span>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <p class="mb-1"><i class="fas fa-graduation-cap text-info me-1"></i>THPT:</p>
+                <div class="subject-badges">
+                  {% for group in career.university_info.subject_groups.exam %}
+                    <span class="badge bg-light text-dark border me-1">{{ group }}</span>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Admission info -->
+          {% if career.university_info %}
+          <div class="admission-info">
+            <h6 class="fw-bold text-info">
+              <i class="fas fa-info-circle me-2"></i>Thông tin tuyển sinh
+            </h6>
+            <div class="d-flex flex-wrap gap-2">
+              {% if career.university_info.quota %}
+              <span class="badge bg-info">
+                <i class="fas fa-users me-1"></i>
+                Chỉ tiêu: {{ career.university_info.quota }}
+              </span>
+              {% endif %}
+              
+              {% if career.university_info.score_2023.hoc_ba and career.university_info.score_2023.hoc_ba != "" %}
+              <span class="score-badge score-hocba">
+                <i class="fas fa-book me-1"></i>
+                Học bạ: {{ career.university_info.score_2023.hoc_ba }}
+              </span>
+              {% endif %}
+
+              {% if career.university_info.score_2023.thi_thpt and career.university_info.score_2023.thi_thpt != "" %}
+              <span class="score-badge score-thpt">
+                <i class="fas fa-graduation-cap me-1"></i>
+                THPT: {{ career.university_info.score_2023.thi_thpt }}
+              </span>
+              {% endif %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.hover-shadow {
+  transition: all 0.3s ease;
+}
+.hover-shadow:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.score-badge {
+  padding: 0.4em 0.8em;
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+.score-hocba {
+  background: #e9ecef;
+  color: #495057;
+}
+.score-thpt {
+  background: #cff4fc;
+  color: #055160;
+}
+.personality-badges .badge:hover {
+  transform: translateY(-2px);
+}
+.card-title {
+  font-size: 1.25rem;
+  color: #2c3e50;
+  transition: color 0.3s ease;
+}
+.card:hover .card-title {
+  color: #3498db;
+}
+.highlight {
+  background-color: yellow;
+  padding: 2px;
+}
+</style>
+
+<!-- Search and filter script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('searchInput');
+  const personalityGroupFilter = document.getElementById('personalityGroupFilter');
+  const personalityFilter = document.getElementById('personalityFilter');
+  const fieldFilter = document.getElementById('fieldFilter');
+  const scoreFilter = document.getElementById('scoreFilter');
+  const scoreTypeFilter = document.getElementById('scoreTypeFilter');
+  const careerItems = document.querySelectorAll('.career-item');
+
+  function filterCareers() {
+    const searchText = searchInput.value.toLowerCase();
+    const personalityGroupValue = personalityGroupFilter.value;
+    const personalityValue = personalityFilter.value;
+    const fieldValue = fieldFilter.value;
+    const scoreValue = parseFloat(scoreFilter.value);
+    const scoreType = scoreTypeFilter.value;
+
+    careerItems.forEach(item => {
+      const card = item.querySelector('.card');
+      const title = item.querySelector('.card-title').textContent.toLowerCase();
+      const code = item.querySelector('.badge')?.textContent.toLowerCase() || '';
+      
+      // Chỉ tìm kiếm theo tên và mã ngành
+      const searchMatch = searchText === '' || 
+        title.includes(searchText) || 
+        code.includes(searchText);
+        
+      const personalityTypes = item.dataset.personality.split(' ');
+      const matchesPersonality = !personalityValue || personalityTypes.includes(personalityValue);
+      const matchesField = !fieldValue || item.dataset.field === fieldValue;
+      
+      let matchesScore = true;
+      if (!isNaN(scoreValue)) {
+        const scoreElement = scoreType === 'hoc_ba' ? 
+          item.querySelector('.score-hocba') : 
+          item.querySelector('.score-thpt');
+
+        if (scoreElement) {
+          const scoreText = scoreElement.textContent.trim();
+          const careerScore = parseFloat(scoreText.split(':')[1]);
+          
+          if (!isNaN(careerScore)) {
+            matchesScore = scoreValue >= careerScore;
+
+            if (matchesScore) {
+              card.classList.add('border-success');
+              card.classList.remove('border-danger');
+            } else {
+              card.classList.add('border-danger'); 
+              card.classList.remove('border-success');
+            }
+          }
+        } else {
+          matchesScore = false;
+        }
+      } else {
+        card.classList.remove('border-success', 'border-danger');
+      }
+
+      let matchesPersonalityGroup = true;
+      if (personalityGroupValue) {
+        matchesPersonalityGroup = personalityTypes.some(type => 
+          PERSONALITY_GROUPS[personalityGroupValue].includes(type)
+        );
+      }
+
+      item.style.display = (searchMatch && matchesPersonality && matchesField && matchesScore && matchesPersonalityGroup) 
+        ? '' : 'none';
+    });
+  }
+
+  // Thêm debounce cho search
+  function debounce(func, wait) {
+    let timeout;
+    return function() {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, arguments), wait);
+    };
+  }
+  
+  searchInput.addEventListener('input', debounce(filterCareers, 300));
+  
+  // Lưu filter vào localStorage
+  const saveFilters = () => {
+    const filters = {
+      personalityGroup: personalityGroupFilter.value,
+      personality: personalityFilter.value,
+      field: fieldFilter.value,
+      score: scoreFilter.value,
+      scoreType: scoreTypeFilter.value
+    };
+    localStorage.setItem('careerFilters', JSON.stringify(filters));
+  };
+  
+  // Load saved filters
+  const loadFilters = () => {
+    const saved = localStorage.getItem('careerFilters');
+    if (saved) {
+      const filters = JSON.parse(saved);
+      personalityGroupFilter.value = filters.personalityGroup;
+      personalityFilter.value = filters.personality;
+      fieldFilter.value = filters.field;
+      scoreFilter.value = filters.score;
+      scoreTypeFilter.value = filters.scoreType;
+      filterCareers();
+    }
+  };
+  
+  [personalityGroupFilter, personalityFilter, fieldFilter, scoreFilter, scoreTypeFilter].forEach(el => {
+    el.addEventListener('change', filterCareers);
+    el.addEventListener('change', saveFilters);
+  });
+  
+  loadFilters();
+});
+</script>
+
+{% endblock %}

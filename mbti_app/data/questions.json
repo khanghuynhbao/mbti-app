@@ -1,0 +1,527 @@
+[
+  {
+    "id": 1,
+    "question": "Trong một buổi tiệc, bạn sẽ:",
+    "options": [
+      "Thoải mái trò chuyện với tất cả mọi người, kể cả người lạ",
+      "Chỉ tương tác với những người bạn quen"
+    ],
+    "dimension": "EI"
+  },
+  {
+    "id": 2,
+    "question": "Bạn thiên về:",
+    "options": ["Thực tế hơn là suy đoán", "Suy đoán hơn là thực tế"],
+    "dimension": "SN"
+  },
+  {
+    "id": 3,
+    "question": "Điều gì khiến bạn cảm thấy tệ hơn?",
+    "options": [
+      "Đầu óc trên mây, viển vông và phi thực tế",
+      "Nhàm chán, đơn điệu"
+    ],
+    "dimension": "SN"
+  },
+  {
+    "id": 4,
+    "question": "Bạn thấy ấn tượng hơn bởi:",
+    "options": ["Nguyên lý, nguyên tắc", "Cảm xúc, tình cảm"],
+    "dimension": "TF"
+  },
+  {
+    "id": 5,
+    "question": "Bạn dễ bị thuyết phục hơn bởi những sự việc:",
+    "options": [
+      "Logic, dựa trên bằng chứng và lý lẽ",
+      "Cảm động, thiên về cảm xúc và tình người"
+    ],
+    "dimension": "TF"
+  },
+  {
+    "id": 6,
+    "question": "Bạn thích làm việc:",
+    "options": ["Với thời hạn (deadline) rõ ràng", "Tùy hứng, linh hoạt"],
+    "dimension": "JP"
+  },
+  {
+    "id": 7,
+    "question": "Khi lựa chọn, bạn thường:",
+    "options": [
+      "Xem xét kỹ lưỡng từ nhiều khía cạnh",
+      "Tin vào suy đoán và linh cảm của mình"
+    ],
+    "dimension": "SN"
+  },
+  {
+    "id": 8,
+    "question": "Tại các buổi gặp mặt, bạn sẽ:",
+    "options": [
+      "Muốn tận hưởng bữa tiệc và ở lại đến cuối cùng",
+      "Nhanh chóng thấy mệt mỏi và muốn ra về sớm"
+    ],
+    "dimension": "EI"
+  },
+  {
+    "id": 9,
+    "question": "Tuýp người nào sẽ thu hút bạn hơn?",
+    "options": [
+      "Người logic và thực tế",
+      "Người có khả năng tưởng tượng phong phú"
+    ],
+    "dimension": "SN"
+  },
+  {
+    "id": 10,
+    "question": "Bạn hứng thú hơn với những sự việc:",
+    "options": ["Đã và đang xảy ra", "Có khả năng xảy ra"],
+    "dimension": "SN"
+  },
+  {
+    "id": 11,
+    "question": "Bạn thường đánh giá người khác dựa trên:",
+    "options": ["Quy định, nguyên tắc", "Hoàn cảnh cụ thể"],
+    "dimension": "TF"
+  },
+  {
+    "id": 12,
+    "question": "Khi tiếp cận người khác, bạn thường đánh giá họ dựa trên góc nhìn nào?",
+    "options": ["Khách quan", "Chủ quan"],
+    "dimension": "TF"
+  },
+  {
+    "id": 13,
+    "question": "Bạn thường là người:",
+    "options": ["Luôn đúng giờ", "Thong thả, linh hoạt về thời gian"],
+    "dimension": "JP"
+  },
+  {
+    "id": 14,
+    "question": "Sau khi trải qua một kỳ thi, bạn thường:",
+    "options": [
+      "Cảm thấy nhẹ nhõm và bắt đầu lên lịch đi chơi",
+      "Lo lắng về kết quả sẽ đạt được"
+    ],
+    "dimension": "JP"
+  },
+  {
+    "id": 15,
+    "question": "Trong nhóm, bạn thường là người:",
+    "options": ["Luôn nắm bắt thông tin kịp thời", "Biết thông tin muộn hơn"],
+    "dimension": "EI"
+  },
+  {
+    "id": 16,
+    "question": "Cách bạn giải quyết những công việc thường ngày là:",
+    "options": ["Làm theo cách thông thường", "Làm theo cách của riêng mình"],
+    "dimension": "JP"
+  },
+  {
+    "id": 17,
+    "question": "Theo bạn, các nhà văn nên:",
+    "options": [
+      "Viết chính xác những gì họ nghĩ, diễn đạt một cách rõ ràng, nghĩa trên mặt chữ",
+      "Diễn đạt bằng biện pháp so sánh, liên tưởng, ví von thâm sâu"
+    ],
+    "dimension": "SN"
+  },
+  {
+    "id": 18,
+    "question": "Điều gì thu hút bạn hơn?",
+    "options": [
+      "Tính nhất quán trong tư tưởng",
+      "Mối quan hệ hài hòa giữa người với người"
+    ],
+    "dimension": "TF"
+  },
+  {
+    "id": 19,
+    "question": "Bạn cảm thấy thoải mái hơn khi đưa ra nhận xét:",
+    "options": ["Dựa trên logic", "Dựa trên quan điểm, giá trị cá nhân"],
+    "dimension": "TF"
+  },
+  {
+    "id": 20,
+    "question": "Bạn thích những điều:",
+    "options": ["Theo kế hoạch và ổn định", "Linh hoạt và có thể thay đổi"],
+    "dimension": "JP"
+  },
+  {
+    "id": 21,
+    "question": "Một phút thật lòng với bản thân nhé. Bạn là người:",
+    "options": ["Nghiêm túc, quyết đoán", "Dễ tính, thoải mái"],
+    "dimension": "TF"
+  },
+  {
+    "id": 22,
+    "question": "Khi nói chuyện điện thoại, bạn:",
+    "options": [
+      "Hiếm khi băn khoăn đến những điều mình sẽ nói",
+      "Thường chuẩn bị trước những điều mình sẽ nói"
+    ],
+    "dimension": "EI"
+  },
+  {
+    "id": 23,
+    "question": "Theo bạn, các sự việc và hiện tượng:",
+    "options": [
+      "Tự nói lên bản chất của chính nó",
+      "Tồn tại để minh họa cho các quy luật, quy tắc khác"
+    ],
+    "dimension": "SN"
+  },
+  {
+    "id": 24,
+    "question": "Những người có tầm nhìn xa:",
+    "options": [
+      "Ở mức độ nào đó, họ thường gây khó chịu cho người khác",
+      "Khá thú vị, lôi cuốn"
+    ],
+    "dimension": "SN"
+  },
+  {
+    "id": 25,
+    "question": "Bạn là người:",
+    "options": ["Có cái đầu lạnh", "Có trái tim ấm"],
+    "dimension": "TF"
+  },
+  {
+    "id": 26,
+    "question": "Bạn cảm thấy tồi tệ hơn khi đối mặt với:",
+    "options": ["Sự bất công", "Sự tàn nhẫn"],
+    "dimension": "TF"
+  },
+  {
+    "id": 27,
+    "question": "Theo bạn, quyết định nên được đưa ra:",
+    "options": [
+      "Dựa trên việc cân nhắc và lựa chọn kỹ lưỡng",
+      "Thuận theo tự nhiên, nước chảy mây trôi"
+    ],
+    "dimension": "JP"
+  },
+  {
+    "id": 28,
+    "question": "Khi đi mua sắm, bạn thích cảm giác nào hơn?",
+    "options": ["Đã mua được thứ mình muốn", "Đang trong quá trình lựa chọn"],
+    "dimension": "JP"
+  },
+  {
+    "id": 29,
+    "question": "Trong công ty, bạn là người:",
+    "options": [
+      "Khởi xướng các câu chuyện",
+      "Đợi người khác khởi xướng rồi tham gia vào"
+    ],
+    "dimension": "EI"
+  },
+  {
+    "id": 30,
+    "question": "Với những kiến thức, quy luật đã được xã hội công nhận, bạn sẽ:",
+    "options": [
+      "Tin tưởng không nghi ngờ",
+      "Không ngừng đặt nghi vấn về tính chính xác"
+    ],
+    "dimension": "SN"
+  },
+  {
+    "id": 31,
+    "question": "Theo bạn, trẻ em thường không:",
+    "options": [
+      "Tự mình phát huy hết năng lực",
+      "Khai thác tối đa trí tưởng tượng của mình"
+    ],
+    "dimension": "SN"
+  },
+  {
+    "id": 32,
+    "question": "Khi mua xe hơi, bạn nghĩ yếu tố nào quan trọng hơn?",
+    "options": ["Nhu cầu sử dụng", "Sở thích cá nhân"],
+    "dimension": "SN"
+  },
+  {
+    "id": 33,
+    "question": "Tính cách của bạn nghiêng về:",
+    "options": ["Cứng rắn", "Mềm mỏng"],
+    "dimension": "TF"
+  },
+  {
+    "id": 34,
+    "question": "Khả năng nào đáng khâm phục hơn?",
+    "options": [
+      "Tổ chức và làm việc bài bản, có phương pháp, hệ thống",
+      "Dễ dàng thích ứng và linh hoạt trong mọi tình hu��ng"
+    ],
+    "dimension": "JP"
+  },
+  {
+    "id": 35,
+    "question": "Bạn mong muốn điều gì hơn ở cấp trên?",
+    "options": ["Chuyên môn xuất sắc", "Tư duy cởi mở"],
+    "dimension": "TF"
+  },
+  {
+    "id": 36,
+    "question": "Khi đối mặt với những vấn đề mới, bạn thường cảm thấy:",
+    "options": [
+      "Hào hứng, tràn đầy năng lượng",
+      "Mệt mỏi, nhanh chóng bị hút cạn sức lực"
+    ],
+    "dimension": "EI"
+  },
+  {
+    "id": 37,
+    "question": "Tính cách của bạn thiên về:",
+    "options": ["Thực tế", "Mơ mộng"],
+    "dimension": "SN"
+  },
+  {
+    "id": 38,
+    "question": "Bạn sẽ quan tâm hơn đến:",
+    "options": [
+      "Giá trị thực tế mà một người mang lại",
+      "Cảm nhận, suy nghĩ của đối phương"
+    ],
+    "dimension": "TF"
+  },
+  {
+    "id": 39,
+    "question": "Điều gì làm bạn thoải mái hơn?",
+    "options": [
+      "Thảo luận kỹ lưỡng về một vấn đề (quá trình)",
+      "Thống nhất được hướng giải quyết cho một vấn đề (kết quả)"
+    ],
+    "dimension": "TF"
+  },
+  {
+    "id": 40,
+    "question": "Bạn sẽ lựa chọn công việc nào?",
+    "options": [
+      "Công việc bạn không thực sự thích nhưng đem lại thu nhập cao",
+      "Công việc mà bạn hằng mơ ước nhưng thu nhập trung bình"
+    ],
+    "dimension": "JP"
+  },
+  {
+    "id": 41,
+    "question": "Bạn thích được điều hướng công việc theo cách:",
+    "options": [
+      "Giao việc trọn gói, bàn giao 100% sau khi hoàn thành",
+      "Giao việc hàng ngày, từng bước hoàn thành công việc"
+    ],
+    "dimension": "JP"
+  },
+  {
+    "id": 42,
+    "question": "Bạn thường tìm kiếm những điều:",
+    "options": ["Được sắp xếp theo thứ tự rõ ràng", "Ngẫu nhiên, tùy hứng"],
+    "dimension": "JP"
+  },
+  {
+    "id": 43,
+    "question": "Bạn thường kết giao:",
+    "options": [
+      "Với nhiều bạn nhưng không quá thân",
+      "Với ít bạn nhưng tình cảm khăng khít"
+    ],
+    "dimension": "EI"
+  },
+  {
+    "id": 44,
+    "question": "Điều gì ảnh hưởng tới quyết định của bạn nhiều hơn?",
+    "options": ["Tình hình thực tế", "Nguyên tắc, luật lệ"],
+    "dimension": "TF"
+  },
+  {
+    "id": 45,
+    "question": "Bạn thấy hứng thú hơn với việc:",
+    "options": ["Sản xuất và phân phối", "Thiết kế và nghiên cứu"],
+    "dimension": "SN"
+  },
+  {
+    "id": 46,
+    "question": "Bạn thường được tán thưởng vì:",
+    "options": ["Là người có tư duy logic", "Là người tinh tế, tình cảm"],
+    "dimension": "TF"
+  },
+  {
+    "id": 47,
+    "question": "Bạn thấy điều gì giá trị hơn ở bản thân mình?",
+    "options": ["Tinh thần kiên định, vững vàng", "Sự toàn tâm, cống hiến"],
+    "dimension": "TF"
+  },
+  {
+    "id": 48,
+    "question": "Bạn đánh giá cao:",
+    "options": [
+      "Tuyên bố cuối cùng, không thay đổi",
+      "Tuyên bố mang tính dự kiến, có thể thay đổi"
+    ],
+    "dimension": "JP"
+  },
+  {
+    "id": 49,
+    "question": "Bạn thấy nhẹ nhõm hơn:",
+    "options": ["Trước khi đưa ra quyết định", "Sau khi đưa ra quyết định"],
+    "dimension": "JP"
+  },
+  {
+    "id": 50,
+    "question": "Bạn đánh giá bản thân là người như thế nào?",
+    "options": [
+      "Tôi có thể dễ dàng bắt chuyện với người lạ",
+      "Tôi không có hứng thú trò chuyện với người lạ"
+    ],
+    "dimension": "EI"
+  },
+  {
+    "id": 51,
+    "question": "Bạn có xu hướng tin tưởng vào:",
+    "options": ["Kinh nghiệm của mình", "Linh cảm của mình"],
+    "dimension": "SN"
+  },
+  {
+    "id": 52,
+    "question": "Bạn thường:",
+    "options": [
+      "Giải quyết vấn đề một cách thực tế và hiệu quả (có thể áp dụng được ngay)",
+      "Nghĩ ra những giải pháp sáng tạo và độc đáo (có thể không thực hiện ngay được)"
+    ],
+    "dimension": "SN"
+  },
+  {
+    "id": 53,
+    "question": "Bạn thấy ấn tượng hơn khi tiếp xúc với một người:",
+    "options": ["Giàu lý trí", "Giàu cảm xúc"],
+    "dimension": "TF"
+  },
+  {
+    "id": 54,
+    "question": "Bạn đánh giá tính cách nào cao hơn?",
+    "options": ["Sự công bằng", "Sự đồng cảm"],
+    "dimension": "TF"
+  },
+  {
+    "id": 55,
+    "question": "Theo bạn, mọi chuyện sẽ diễn ra hợp lý hơn nếu:",
+    "options": ["Được chuẩn bị trước", "Diễn ra tự nhiên"],
+    "dimension": "JP"
+  },
+  {
+    "id": 56,
+    "question": "Trong một mối quan hệ:",
+    "options": [
+      "Điều gì cũng có thể thương lượng và điều chỉnh lại để đạt được sự đồng thuận chung",
+      "Nên để mọi chuyện diễn ra tự nhiên, thuận theo hoàn cảnh đưa đẩy"
+    ],
+    "dimension": "JP"
+  },
+  {
+    "id": 57,
+    "question": "Khi có số lạ gọi tới điện thoại của bạn, bạn sẽ:",
+    "options": ["Nhấc máy ngay để xem ai đang gọi", "Chần chừ không nghe máy"],
+    "dimension": "EI"
+  },
+  {
+    "id": 58,
+    "question": "Bạn đánh giá cao khả năng của mình hơn khi:",
+    "options": [
+      "Đưa ra quyết định dựa trên số liệu thực tế",
+      "Đưa ra quyết định dựa trên trực giác và linh cảm"
+    ],
+    "dimension": "SN"
+  },
+  {
+    "id": 59,
+    "question": "Bạn bị thu hút hơn với điều gì?",
+    "options": ["Những nguyên tắc cơ bản", "Những ẩn ý sâu xa"],
+    "dimension": "SN"
+  },
+  {
+    "id": 60,
+    "question": "Bạn không thích những người:",
+    "options": [
+      "Quá cảm xúc (dễ bị tình cảm chi phối)",
+      "Quá lý trí (không dễ bị ảnh hưởng bởi yếu tố cảm xúc)"
+    ],
+    "dimension": "TF"
+  },
+  {
+    "id": 61,
+    "question": "Bạn thuộc tuýp người:",
+    "options": [
+      "Mạnh mẽ, quyết đoán, không dễ bị thuyết phục",
+      "Mềm mỏng, dễ bị thuyết phục, dễ thay đổi quan điểm dưới ảnh hưởng của người khác"
+    ],
+    "dimension": "TF"
+  },
+  {
+    "id": 62,
+    "question": "Trước một chuyến đi chơi, bạn thường:",
+    "options": ["Lên lịch trình chi tiết, rõ ràng", "Tới đâu hay tới đó"],
+    "dimension": "JP"
+  },
+  {
+    "id": 63,
+    "question": "Trong công việc, bạn thường:",
+    "options": [
+      "Làm việc theo thói quen",
+      "Hay thay đổi, thích thử nghiệm những điều mới"
+    ],
+    "dimension": "JP"
+  },
+  {
+    "id": 64,
+    "question": "Bạn nghĩ mình là người:",
+    "options": ["Cởi mở, dễ gần", "Kín tiếng, khó đoán"],
+    "dimension": "EI"
+  },
+  {
+    "id": 65,
+    "question": "Khi viết lách, bạn có xu hướng:",
+    "options": [
+      "Viết những áng văn bay bổng (thiên về nghĩa bóng)",
+      "Viết về những điều thực tế (thiên về nghĩa đen)"
+    ],
+    "dimension": "SN"
+  },
+  {
+    "id": 66,
+    "question": "Là một cấp trên, bạn cảm thấy điều gì khó hơn?",
+    "options": [
+      "Hiểu và chia sẻ với cấp dưới",
+      "Bỏ qua yếu tố cảm xúc, công việc là quan trọng nhất"
+    ],
+    "dimension": "TF"
+  },
+  {
+    "id": 67,
+    "question": "Bạn cảm thấy mình cần trở nên:",
+    "options": ["Lý trí hơn", "Tình cảm hơn"],
+    "dimension": "TF"
+  },
+  {
+    "id": 68,
+    "question": "Điều gì khiến bạn khó chấp nhận hơn?",
+    "options": [
+      "Hành động thiếu suy nghĩ, gây ra sai phạm lớn",
+      "Sự chỉ trích, phê phán nghiêm khắc quá mức"
+    ],
+    "dimension": "TF"
+  },
+  {
+    "id": 69,
+    "question": "Bạn sẽ lựa chọn:",
+    "options": [
+      "Sự kiện đã được lên kế hoạch trước",
+      "Sự kiện chưa được lên kế hoạch trước"
+    ],
+    "dimension": "JP"
+  },
+  {
+    "id": 70,
+    "question": "Phong cách làm việc của bạn là gì?",
+    "options": ["Cân nhắc thận trọng", "Tự nhiên, tự phát"],
+    "dimension": "JP"
+  }
+]

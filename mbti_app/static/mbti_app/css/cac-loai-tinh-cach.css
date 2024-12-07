@@ -1,0 +1,137 @@
+/* Layout & Spacing */
+.personality-group {
+  margin-bottom: 4rem;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+
+/* Typography */
+.personalities-section {
+  --title-size: 2.5rem;
+  --subtitle-size: 1.15rem;
+  --group-title-size: 1.75rem;
+  --card-title-size: 1.25rem;
+  --badge-size: 1.1rem;
+  --desc-size: 0.95rem;
+}
+
+.personalities-section .display-4 {
+  font-size: var(--title-size);
+}
+.personalities-section .lead {
+  font-size: var(--subtitle-size);
+}
+.group-title {
+  font-size: var(--group-title-size);
+}
+.card-title {
+  font-size: var(--card-title-size);
+}
+.personality-code .badge {
+  font-size: var(--badge-size);
+}
+.personality-card .card-text {
+  font-size: var(--desc-size);
+}
+
+/* Card Styling */
+.personality-card {
+  min-height: 250px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.personality-card .card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.personality-card .card-text {
+  text-align: justify;
+  min-height: 6rem;
+  line-height: 1.6;
+  color: var(--bs-gray-600);
+  margin-bottom: 0.5rem;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Badge */
+.personality-code {
+  text-align: center;
+}
+
+.personality-code .badge {
+  font-weight: 600;
+  min-width: 90px;
+  padding: 0.5rem 1rem;
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+.card-link:hover .personality-card {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Group Colors */
+[data-group] .card-title,
+[data-group] .group-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+[data-group="analysts"] .card-title,
+[data-group="analysts"] .group-title {
+  color: var(--bs-success);
+}
+
+[data-group="diplomats"] .card-title,
+[data-group="diplomats"] .group-title {
+  color: var(--bs-primary);
+}
+
+[data-group="sentinels"] .card-title,
+[data-group="sentinels"] .group-title {
+  color: var(--bs-danger);
+}
+
+[data-group="explorers"] .card-title,
+[data-group="explorers"] .group-title {
+  color: var(--bs-warning);
+}
+
+[data-group="analysts"] {
+  background-color: var(--bs-success-bg-subtle);
+}
+
+[data-group="diplomats"] {
+  background-color: var(--bs-primary-bg-subtle);
+}
+
+[data-group="sentinels"] {
+  background-color: var(--bs-danger-bg-subtle);
+}
+
+[data-group="explorers"] {
+  background-color: var(--bs-warning-bg-subtle);
+}
